@@ -1,0 +1,42 @@
+.details {
+  border-bottom: 1px solid #e0e0e0;
+
+  &.no-border {
+    border-bottom: none;
+  }
+}
+
+.icon {
+  transition: transform 0.1s;
+}
+
+.summary {
+  cursor: pointer;
+  padding: 0.5rem 0;
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  font-weight: 500;
+}
+
+.details:not([open]) {
+  & svg.opened {
+    display: none;
+  }
+  & svg.closed {
+    display: block;
+  }
+}
+
+.content {
+  margin-bottom: 0.5rem;
+}
+
+.details[open] {
+  .icon {
+    transform: rotate(90deg);
+  }
+}

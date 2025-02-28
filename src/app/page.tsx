@@ -1,101 +1,156 @@
 import Image from "next/image";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import Rating from "@/components/Rating";
+import Chip from "@/components/Chip";
+import DeliveryIcon from "../../public/assets/icons/delivery.svg";
+import DiscountIcon from "../../public/assets/icons/discount.svg";
+import DownloadIcon from "../../public/assets/icons/download.svg";
+import HandIcon from "../../public/assets/icons/hand.svg";
+import FlagIcon from "../../public/assets/icons/flag.svg";
+import BookmarkIcon from "../../public/assets/icons/bookmark.svg";
+import ShoppingCardIcon from "../../public/assets/icons/shopping_cart.svg";
+import Accordion from "@/components/Accordion";
+import Button from "@/components/Button";
+import ExtendableText from "@/components/ExtendableText";
+import UserPanel from "@/components/UserPanel";
+import { CustomAccordion } from "@/app/CustomAccordion";
+import Carousel from "@/components/Сarousel";
+
+const rating = 4.7;
+const links = [
+  { label: "Home", url: "/" },
+  { label: "Shoes", url: "/shoes" },
+  { label: "Men’s Shoes", url: "/shoes/mens" },
+  { label: "Sneakers", url: "/shoes/mens/sneakers" },
+  { label: "Tie Sneakers" },
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <main className={`flex max-h-full pr-9 gap-4 overflow-auto`}>
+      <div className="flex-1">
+        <Carousel
+          images={[
+            "/assets/productPreview.webp",
+            "/assets/productPreview2.webp",
+            "/assets/productPreview.webp",
+            "/assets/productPreview2.webp",
+          ]}
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      </div>
+      <div className="max-w-[38%] flex flex-col pl-12 pt-5 pb-5 pr-8 h-max">
+        <Breadcrumbs className="mb-8" links={links} />
+        <h1 className={`text-2xl font-normal mb-2`}>
+          Custom nike sneakers, white unisex sneakers. Alien art, sneakers nike
+          air force 1
+        </h1>
+        <div className="flex gap-2 mb-6">
+          <Rating rating={rating} />
+          <div className="font-semibold">{rating}</div>
+          <div className="text-gray-400 font-light">(40 reviews)</div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+        <div className="flex items-center gap-2 mb-2">
+          <div className="text-2xl">$ 240.00</div>
+          <div className="text-base line-through text-gray-400 font-extralight">
+            $ 365.50
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-2 mb-6">
+          <Chip
+            icon={<Image src={DiscountIcon} alt="discount icon" />}
+            label="32% off"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+          <Chip
+            icon={<Image src={DeliveryIcon} alt="delivery icon" />}
+            label="Free delivery"
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
+          <Chip
+            icon={<Image src={HandIcon} alt="hand icon" />}
+            label="Handmade"
           />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          <Chip
+            icon={<Image src={DownloadIcon} alt="download icon" />}
+            label="Digital"
+          />
+        </div>
+        <div className="mb-6">
+          <Accordion title="Size">
+            <div>Size options</div>
+          </Accordion>
+          <Accordion title="Color">
+            <div>Color options</div>
+          </Accordion>
+          <Accordion noBorder title="Add Your Personalisation">
+            <div>Personalization options</div>
+          </Accordion>
+        </div>
+        <div className="flex flex-col gap-2 mb-8">
+          <Button>Buy Now</Button>
+          <Button variant="outlined">
+            <div className="flex justify-center items-center gap-3">
+              <Image
+                src={ShoppingCardIcon}
+                width={24}
+                height={24}
+                alt="shopping card icon"
+              />
+              Add to Cart
+            </div>
+          </Button>
+          <Button variant="text">
+            <div className="flex justify-center items-center gap-3">
+              <Image
+                src={BookmarkIcon}
+                width={24}
+                height={24}
+                alt="bookmark icon"
+              />
+              Add to Wishlist
+            </div>
+          </Button>
+        </div>
+        <ExtendableText className="mb-6">
+          Discover your inner world as a street artist in our custom-made Nike
+          Air Force sneakers with vibrant graffiti patterns. These sneakers are
+          not just shoes, they are a bold expression of individuality and
+          creativity. Talented artists carefully paint each pair by hand, so no
+          two pairs are exactly the same. The graffiti style gives the classic
+          Nike Air Force design an urban touch, turning these sneakers into a
+          real work of art that reflects the essence of street culture.
+        </ExtendableText>
+
+        <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center flex-nowrap gap-2">
+            <Image src={FlagIcon} alt="flag icon" />
+            Report This Item
+          </div>
+          <div className="text-gray-400 font-extralight">June 16, 2024 </div>
+        </div>
+
+        <UserPanel
+          className="mb-6"
+          avatarUrl="/assets/avatar.png"
+          username="olganikeart"
+        />
+
+        <div className="mb-10">
+          <CustomAccordion title="PRICE HISTORY">
+            <div>PRICE HISTORY content</div>
+          </CustomAccordion>
+          <CustomAccordion title="PAYMENT METHODS">
+            <div>PAYMENT METHODS content</div>
+          </CustomAccordion>
+          <CustomAccordion title="SHARE">
+            <div>SHARE content</div>
+          </CustomAccordion>
+          <CustomAccordion title="SHIPPING & RETURNS">
+            <div>SHIPPING & RETURNS content</div>
+          </CustomAccordion>
+          <CustomAccordion noBorder title="WARRANTY">
+            <div>WARRANTY content</div>
+          </CustomAccordion>
+        </div>
+      </div>
+    </main>
   );
 }
